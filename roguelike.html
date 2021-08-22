@@ -20,10 +20,10 @@
       .Orc {
         color: lightgreen;
       }
-      .Golden-bow {
+      .Golden-Bow {
         color: goldenrod;
       }
-      .Diamond-axe {
+      .Diamond-Axe {
         color: goldenrod;
       }
       .Wall {
@@ -163,7 +163,7 @@
           <td></td>
           <td></td>
           <td></td>
-          <td class="Golden-bow">D</td>
+          <td class="Golden-Bow">D</td>
           <td class="Wall"></td>
           <td></td>
           <td></td>
@@ -387,7 +387,7 @@
           <td></td>
           <td></td>
           <td class="Wall"></td>
-            <td></td>
+          <td></td>
           <td></td>
           <td></td>
           <td></td>
@@ -406,7 +406,7 @@
         <!-- 17 -->
         <tr>
           <td class="Wall"></td>
-          <td class="Diamond-axe Wall">T</td>
+          <td class="Diamond-Axe Wall">T</td>
           <td class="Wall"></td>
           <td class="Wall"></td>
           <td class="Wall"></td>
@@ -458,7 +458,7 @@
           <td class="Wall"></td>
           <td class="Wall"></td>
           <td class="Wall"></td>
- <td></td>
+          <td></td>
           <td class="Wall"></td>
           <td class="Wall"></td>
           <td class="Wall"></td>
@@ -499,17 +499,39 @@
     </section>
     <script>
 
-        const celulas = document.querySelectorAll("td")
+      const celulas = document.querySelectorAll("td")
 
-        celulas.forEach(cell => {
-                if (cell.classList.length == 0)
-                 cell.classList.add("Wall")
-              
-                cell.addEventListener("click", () => console.log(`Classes: ${cell.classList.toString()}`))
+      celulas.forEach(cell => {
 
-                
-        })
 
+              cell.addEventListener("click", () => {
+
+                if (cell.classList.contains("Wall"))
+                  cell.classList.remove("Wall")
+                else if (cell.classList.length == 0){
+                cell.classList.add("Orc")
+                  cell.innerHTML = "O"
+                }
+               else if (cell.classList.contains("Orc")){
+                  cell.innerText = "D"
+                  cell.classList.remove("Orc")
+                  cell.classList.add("Golden-Bow")
+               }
+               else if (cell.classList.contains("Golden-Bow")){
+                  cell.innerText = "T"
+                  cell.classList.remove("Golden-Bow")
+                  cell.classList.add("Diamond-Axe")
+               }
+                else if (cell.classList.contains("Diamond-Axe"))
+                {
+                cell.innerText = ""
+                  cell.classList.remove("Diamond-Axe")
+                  cell.classList.add("Wall")
+               }
+
+               console.log(`Classes: ${cell.classList.toString()}`)
+             })
+            })
     </script>
   </body>
 </html>
