@@ -503,7 +503,11 @@
 
         celulas.forEach(cell => {
                 if (cell.classList.length == 0)
-                  cell.classList.add("Wall")
+                 cell.classList.add("Wall")
+              
+                cell.addEventListener("click", () => console.log(`Classes: ${cell.classList.toString()}`))
+
+                
         })
 
     </script>
