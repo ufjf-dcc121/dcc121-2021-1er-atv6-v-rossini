@@ -498,9 +498,12 @@
       </table>
     </section>
     <script>
+
         const celulas = document.querySelectorAll("td")
 
-        
+        celulas.forEach(cell => {
+                cell.classList.add("Wall")
+        })
 
     </script>
   </body>
